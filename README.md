@@ -104,7 +104,7 @@ go to AWS Secret Manager, copy ARN of the created Secret and set it in the task 
 
 Search for (e.g. in EMEA-TEST tak definition, if you are deploying to EMEA TEST):
 ```
-<<TODO: set ARN of secrets manager>>
+arn secret arn:aws:secretsmanager:eu-central-1:084828574290:secret:backend-secretsmanager-test-eu-central-1-cFaxgP
 ```
 
 Then, please go to AWS Secrets Manager, open your secrets and edit JSON string.
