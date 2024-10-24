@@ -1,4 +1,4 @@
-name: Datacenter map
+name: Datacenter map2
 
 on:
   workflow_call:

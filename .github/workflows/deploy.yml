@@ -1,4 +1,4 @@
-name: Deploy application
+name: Deploy application2
 run-name: Deploy ${{ inputs.tag }} to ${{ inputs.destinationHubEnv }} from ${{ inputs.sourceHubEnv }}
 
 on:
