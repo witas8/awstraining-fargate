@@ -36,7 +36,8 @@ public class NotifyMeController implements NotifyMeApi {
     //  Method should return Http 200 and content of sent message to subscribers.
     @Override
     public ResponseEntity<SentMessage> notifyMe(NotifyMe notifyMe) {
-        return ResponseEntity.notFound().build();
+        String text = service.notifyMe(map(notifyMe));
+        return ResponseEntity.ok(map(text));
     }
 
     private static SentMessage map(String message) {
