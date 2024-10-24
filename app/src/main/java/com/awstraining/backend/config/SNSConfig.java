@@ -2,7 +2,11 @@ package com.awstraining.backend.config;
 
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.AmazonSNSClientBuilder;
+import com.amazonaws.services.translate.AmazonTranslate;
+import com.amazonaws.services.translate.AmazonTranslateClient;
+import com.amazonaws.services.translate.AmazonTranslateClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,4 +38,13 @@ public class SNSConfig {
                                 .withRegion("eu-central-1")
                 .build();
     }
+
+    @Bean
+    AmazonTranslate configureTranslate(){
+        return AmazonTranslateClientBuilder.standard()
+                .withCredentials(DefaultAWSCredentialsProviderChain.getInstance())
+                .withRegion("eu-central-1")
+                .build();
+    }
+
 }

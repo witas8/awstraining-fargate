@@ -1,5 +1,8 @@
 package com.awstraining.backend.business.notifyme;
 
+import com.amazonaws.services.translate.AmazonTranslate;
+import com.amazonaws.services.translate.model.TranslateTextRequest;
+import com.amazonaws.services.translate.model.TranslateTextResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class NotifyMeService {
 
     private MessageSender sender;
+    private AmazonTranslate translate;
 
     // TODO: lab1
     //  1. Inject MessageSender.
@@ -15,8 +19,9 @@ public class NotifyMeService {
     // TODO lab3
     //  1. Inject sentiment detector
     @Autowired
-    public NotifyMeService(MessageSender sender) {
+    public NotifyMeService(MessageSender sender, AmazonTranslate amazonTranslate) {
         this.sender = sender;
+        this.translate = amazonTranslate;
     }
 
     public String notifyMe(NotifyMeDO notifyMe) {
@@ -31,7 +36,10 @@ public class NotifyMeService {
         //  1. Detect sentiment of translated message.
         //  2. Change sending of text to "setiment: translated text" and return it.
         final String text = notifyMe.text();
-        sender.send(text);
+        TranslateTextRequest translateTextRequest = new TranslateTextRequest().withText(text)
+                .withSourceLanguageCode(notifyMe.sourceLc()).withTargetLanguageCode(notifyMe.targetLc());
+        TranslateTextResult translateTextResult = translate.translateText(translateTextRequest);
+        sender.send(translateTextResult.getTranslatedText());
         return text;
     }
     

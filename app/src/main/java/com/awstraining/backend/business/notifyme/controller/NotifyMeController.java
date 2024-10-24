@@ -37,6 +37,7 @@ public class NotifyMeController implements NotifyMeApi {
     @Override
     public ResponseEntity<SentMessage> notifyMe(NotifyMe notifyMe) {
         String text = service.notifyMe(map(notifyMe));
+        service.notifyMe(map(notifyMe));
         return ResponseEntity.ok(map(text));
     }
 
