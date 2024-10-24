@@ -1,4 +1,4 @@
-name: Hello world
+name: Hello world2
 run-name: Hello ${{ inputs.name }} run
 
 on:

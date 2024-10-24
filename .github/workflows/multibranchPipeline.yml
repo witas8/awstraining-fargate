@@ -1,4 +1,4 @@
-name: Multibranch pipeline
+name: Multibranch pipeline2
 run-name: Multibranch ${{ github.head_ref || github.ref_name }}
 
 on:

@@ -1,4 +1,4 @@
-name: Provision with Terraform
+name: Provision with Terraform2
 run-name: Provision with Terraform
 
 on:
