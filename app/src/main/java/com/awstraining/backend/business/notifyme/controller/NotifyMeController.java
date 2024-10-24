@@ -4,20 +4,30 @@ import com.awstraining.backend.api.rest.v1.NotifyMeApi;
 import com.awstraining.backend.api.rest.v1.model.NotifyMe;
 import com.awstraining.backend.api.rest.v1.model.SentMessage;
 import com.awstraining.backend.business.notifyme.NotifyMeDO;
+import com.awstraining.backend.business.notifyme.NotifyMeService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 // TODO: lab1
 //  1. Create RestController "notification/v1".
 //  2. Familiarize yourself with api, open-api contract, how it is generated?
+@RestController
+@RequestMapping("notification/v1")
 public class NotifyMeController implements NotifyMeApi {
 
 
-    
     // TODO: lab1
     //  1. Inject service with business logic.
-//    @Autowired
-    public NotifyMeController() {
+    //private final NotifyMeService notifyMeService;
+    private final NotifyMeService service;
+
+    @Autowired
+    public NotifyMeController(final NotifyMeService service) {
+        this.service = service;
     }
 
 
